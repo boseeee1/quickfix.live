@@ -113,7 +113,7 @@ var Account = function() {
             });
         });
     }
-
+    
     var handleRegister = function() {
 
         $('#register-form').validate({

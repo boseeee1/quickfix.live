@@ -12,9 +12,9 @@ function initLanguageSelect() {
 
 window.addEventListener("DOMContentLoaded", initLanguageSelect);
 
-(function(i18n) {
+(function (i18n) {
     if (i18n.hasInitialised) return;
-    i18n.translate = function(text, params = null) {
+    i18n.translate = function (text, params = null) {
 
         let translate = (window.i18Translations && window.i18Translations[text]) ? window.i18Translations[text] : text;
 
@@ -32,7 +32,7 @@ window.addEventListener("DOMContentLoaded", initLanguageSelect);
         return text;
     };
 
-    i18n.normalizeURL = function(path, lang = "en") {
+    i18n.normalizeURL = function (path, lang = "en") {
         return '/' + window.i18Language + path
     }
 
@@ -43,3 +43,4 @@ window.addEventListener("DOMContentLoaded", initLanguageSelect);
 function _t(text, params = null) {
     return window.i18n ? window.i18n.translate(text, params) : text;
 }
+
