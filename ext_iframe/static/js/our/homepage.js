@@ -1,6 +1,6 @@
 var Homepage = function() {
     var reordering;
-    var stop_streamer_updates = false; // set this to true to stop avgprice_handler()
+    var stop_streamer_updates = false;  // set this to true to stop avgprice_handler()
 
     var handleHomepage = function() {
 
@@ -13,7 +13,7 @@ var Homepage = function() {
             $('#custom').html('');
             // show loader
             var tab = $(this).attr('href').replace('#', '');
-            $('#' + tab).html('<div class="mt-4 mb-3" style="font-size: 24px;"><i class="fas fa-spinner fa-spin"></i> ' + _t("Loading...") + '</div>');
+            $('#' + tab).html('<div class="mt-4 mb-3" style="font-size: 24px;"><i class="fas fa-spinner fa-spin"></i> '+ _t("Loading...") +'</div>');
             stop_streamer_updates = true;
             // load
             $('#' + tab).load(i18n.normalizeURL('/home_tab_load?tab=' + tab), function() {
@@ -244,7 +244,7 @@ var Homepage = function() {
 }();
 
 Homepage.avgprice_handler = function(from_coin_id, price, delta, pref_coin_id, total_volume24f,
-    total_volume, from_to_pref_rate, marketcap) {
+                                     total_volume, from_to_pref_rate, marketcap) {
     if (Homepage.stop_streamer_updates) return;
     update_value(Generic.selector.get('.avgprice-' + from_coin_id), Settings.prefShortSymbol + format_price(price), true, false);
     update_value(Generic.selector.get('.avgprice-' + from_coin_id + '-' + pref_coin_id), get_short_symbol(pref_coin_id) + ' ' +
@@ -284,8 +284,8 @@ Homepage.delta_handler = function(fld, delta) {
 }
 
 Homepage.avgprice_handler_coins = function(from_coin_id, price, marketcap,
-    total_volume1t, total_volume24t, total_volume7t, total_volume30t,
-    delta1pct, delta24pct, delta7pct, delta30pct) {
+                                           total_volume1t, total_volume24t, total_volume7t, total_volume30t,
+                                           delta1pct, delta24pct, delta7pct, delta30pct) {
     if (Homepage.stop_streamer_updates) return;
     update_value(Generic.selector.get('.avgprice-' + from_coin_id), Settings.prefShortSymbol + format_price(price), true, false);
     update_value(Generic.selector.get('.marketcap-' + from_coin_id), Settings.prefShortSymbol + format_large_number(marketcap), false, false);

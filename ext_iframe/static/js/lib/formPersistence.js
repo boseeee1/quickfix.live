@@ -1,4 +1,4 @@
-const FormPersistence = (function() {
+const FormPersistence = (function () {
     function persist(form, options) {
         let defaults = {
             saveOnSubmit: false
@@ -40,8 +40,8 @@ const FormPersistence = (function() {
             if (tag === 'INPUT' && (type === 'password' || type === 'file')) {
                 continue // do not serialize passwords or files
             }
-            if (isNameFiltered(element.name, config.include, config.exclude) ||
-                isElementFiltered(element, config.includeFilter, config.excludeFilter)) {
+            if (isNameFiltered(element.name, config.include, config.exclude)
+                || isElementFiltered(element, config.includeFilter, config.excludeFilter)) {
                 continue
             }
             if (tag === 'INPUT') {
@@ -142,8 +142,8 @@ const FormPersistence = (function() {
                 continue
             }
             if (!speciallyHandled.includes(name)) {
-                let inputs = [...form.elements].filter(element => element.name === name &&
-                    !isElementFiltered(element, config.includeFilter, config.excludeFilter))
+                let inputs = [...form.elements].filter(element => element.name === name
+                    && !isElementFiltered(element, config.includeFilter, config.excludeFilter))
                 inputs.forEach((input, i) => {
                     applyValues(input, data[name], i)
                 })
@@ -232,7 +232,7 @@ const FormPersistence = (function() {
     }
 })();
 
-(function() {
+(function () {
     if (typeof module !== 'undefined' && module.exports) {
         module.exports = exports = FormPersistence
     }

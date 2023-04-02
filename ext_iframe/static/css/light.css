@@ -1,7 +1,6 @@
 /*      Coinlib Light Theme      */
 
 /* If we need italics or another wight we must copy it from proxima-nova.css */
-
 @font-face {
     font-family: 'proxima-nova';
     src: url('../../../static/webfonts/proximanova-regular-webfont.eot');
@@ -23,13 +22,12 @@ html {
     -moz-osx-font-smoothing: grayscale;
 }
 
-.light-theme-only,
-.iti {
-    display: block !important;
+.light-theme-only,.iti {
+    display: block!important;
 }
 
 .dark-theme-only {
-    display: none !important;
+    display: none!important;
 }
 
 /* remove blue outline in chrome */
@@ -79,8 +77,7 @@ h3 {
     font-size: 18px;
 }
 
-.small,
-small {
+.small, small {
     font-size: 12px;
 }
 
@@ -125,9 +122,9 @@ a>*:hover {
 }
 
 .prefsearch {
-    display: flex;
+    display:flex;
     flex-wrap: nowrap;
-    width: 100%;
+    width:100%;
 }
 
 .navbar-theme .navbar-nav .nav-link {
@@ -146,7 +143,7 @@ a>*:hover {
 }
 
 .navbar-theme-top a.register-login {
-    color: #fff !important;
+    color: #fff!important;
     font-weight: 600;
     font-size: 14px;
     margin-left: 20px;
@@ -258,11 +255,10 @@ a.avatar img {
 
 .dropdown-menu {
     background-color: #FAFAFA;
-    box-shadow: 0 2px 10px 0 rgba(27, 43, 68, 0.2);
+    box-shadow: 0 2px 10px 0 rgba(27,43,68,0.2);
     border-radius: 2px;
     border: none;
 }
-
 .dropdown-menu .dropdown-item {
     color: #1B2B44;
     font-size: 13px;
@@ -304,20 +300,17 @@ a.avatar img {
 }
 
 /* for coin search and prefcoin, make keyboard navigation and hover show correct active style */
-
 .typeahead .active .dropdown-item,
 .bootstrap-select .active .dropdown-item {
     color: #1B2B44;
     background-color: #F1F2F3;
     text-decoration: none;
 }
-
 .bootstrap-select .dropdown-menu ul li a.dropdown-item:hover span {
     color: #1B2B44;
 }
 
 /* keeps prefcoin selector popup size in normal size */
-
 .navbar-theme .bootstrap-select {
     width: 50px !important;
 }
@@ -364,6 +357,7 @@ a.avatar img {
         width: 111px;
         height: 30px;
     }
+
 }
 
 /* Sub Header *************************************/
@@ -461,6 +455,7 @@ a.avatar img {
     padding: 5px 12px 0px 12px;
 }
 
+
 .exchange-stat-box {
     box-sizing: border-box;
     padding: 10px 10px;
@@ -480,6 +475,7 @@ a.avatar img {
     font-weight: 600;
     text-transform: uppercase;
 }
+
 
 .stat-box {
     box-sizing: border-box;
@@ -642,8 +638,8 @@ a.avatar img {
 
 .coin-toggler {
     padding: 4px 0 4px 12px;
-}
 
+}
 .coin-toggler .navbar-toggler-icon {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
@@ -659,10 +655,10 @@ a.avatar img {
 }
 
 .table .alt-row-header {
-    color: #606060;
-    font-size: 13px;
-    font-weight: 600;
-    text-transform: uppercase;
+   color: #606060;
+   font-size: 13px;
+   font-weight: 600;
+   text-transform: uppercase;
 }
 
 .table td,
@@ -690,12 +686,9 @@ a.avatar img {
 }
 
 .table tr.disabled img {
-    filter: gray;
-    /* IE6-9 */
-    -webkit-filter: grayscale(1);
-    /* Google Chrome, Safari 6+ & Opera 15+ */
-    filter: grayscale(1);
-    /* Microsoft Edge and Firefox 35+ */
+    filter: gray; /* IE6-9 */
+    -webkit-filter: grayscale(1); /* Google Chrome, Safari 6+ & Opera 15+ */
+    filter: grayscale(1); /* Microsoft Edge and Firefox 35+ */
 }
 
 .starred,
@@ -812,8 +805,8 @@ div.table-responsive table.coinlist img.tbl-icon {
 .table.coinlist .dropdown-menu {
     width: 73px;
     min-width: 73px;
-    left: auto !important;
-    right: 0px !important;
+    left: auto!important;
+    right: 0px!important;
 }
 
 .table.coinlist .dropdown-menu .dropdown-item {
@@ -848,6 +841,7 @@ span.pr-change {
     .nav-item {
         margin-left: 0px;
     }
+    
     .table.coinlist tr td.change-period {
         width: auto;
         max-width: 110px;
@@ -911,7 +905,6 @@ span.pr-change {
 }
 
 /* For people wanting the single coin ticker in very wide form */
-
 @media (min-width: 768px) {
     table.coinlist.w_single .small-chart {
         width: 100%;
@@ -1034,7 +1027,7 @@ input:checked+.slider:before {
 
 .ui-autocomplete {
     background-color: #FAFAFA;
-    box-shadow: 0 2px 10px 0 rgba(27, 43, 68, 0.2);
+    box-shadow: 0 2px 10px 0 rgba(27,43,68,0.2);
     border-radius: 2px;
     border: none;
 }
@@ -1047,12 +1040,12 @@ input:checked+.slider:before {
 }
 
 .ui-state-active {
-    border-left: 1px solid rgb(197, 197, 197) !important;
-    border-right: 1px solid rgb(197, 197, 197) !important;
-    border-top: 1px solid #fafafa !important;
-    border-bottom: 1px solid #fafafa !important;
-    color: #1B2B44 !important;
-    background-color: #F1F2F3 !important;
+    border-left: 1px solid rgb(197, 197, 197)!important;
+    border-right: 1px solid rgb(197, 197, 197)!important;
+    border-top: 1px solid #fafafa!important;
+    border-bottom: 1px solid #fafafa!important;
+    color: #1B2B44!important;
+    background-color: #F1F2F3!important;
 }
 
 /* Footer *****************************************/
@@ -1287,8 +1280,8 @@ input:checked+.slider:before {
 }
 
 .btn-sm {
-    font-size: 12px !important;
-    padding: 5px 15px !important;
+    font-size: 12px!important;
+    padding: 5px 15px!important;
 }
 
 .btn-sm:not(:disabled):not(.disabled) {
@@ -1296,8 +1289,8 @@ input:checked+.slider:before {
 }
 
 .btn-xs {
-    font-size: 11px !important;
-    padding: 2px 4px !important;
+    font-size: 11px!important;
+    padding: 2px 4px!important;
 }
 
 .btn-xs:not(:disabled):not(.disabled) {
@@ -1400,8 +1393,8 @@ a.toggle_currency_rows {
     .brkdwn-wrap .row>.col-7,
     .brkdwn-wrap .row>.col-8,
     .brkdwn-wrap .row>.col-9 {
-        padding-left: 15px !important;
-        padding-right: 15px !important;
+        padding-left: 15px!important;
+        padding-right: 15px!important;
     }
 }
 
@@ -2087,7 +2080,6 @@ body.iosBugFixCaret.modal-open {
 }
 
 /* Responsive Tweaks ******************************/
-
 @media (max-width: 991px) {
     .sub-header {
         padding: 10px 0;
@@ -2234,7 +2226,6 @@ body.iosBugFixCaret.modal-open {
 }
 
 /* Very small screens, tested not to have scrollbars at 360px */
-
 @media (max-width: 374px) {
     .navbar-theme .btn.login-register {
         margin-left: 10px;
@@ -2284,7 +2275,6 @@ body.iosBugFixCaret.modal-open {
 }
 
 /* Fuck-me small screens, tested to be bearable at 320px */
-
 @media (max-width: 339px) {
     .navbar-theme-top .btn.login-register {
         padding: 6px 10px;
@@ -2343,6 +2333,7 @@ body.iosBugFixCaret.modal-open {
         width: 56px;
     }
 }
+
 
 /* condensed numbers: not fixed width & spacing fix */
 
@@ -2411,7 +2402,7 @@ body.iosBugFixCaret.modal-open {
     font-size: 10px !important;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 767px){
     .coin-alt-first {
         margin-left: 43px;
     }
@@ -2436,14 +2427,13 @@ body.iosBugFixCaret.modal-open {
     font-size: 13px;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 767px){
     .highcharts-input-group {
         display: none;
     }
 }
 
 /* coin metrics table START */
-
 .coin-info .nav-tabs {
     border: none;
     border-color: #DDDDDD;
@@ -2495,16 +2485,13 @@ body.iosBugFixCaret.modal-open {
 .coin-info .tab-content {
     width: 100%;
 }
-
 /* coin metrics table END */
 
-.borderless td,
-.borderless th {
+.borderless td, .borderless th {
     border: none;
 }
 
-.table-sm td,
-.table-sm th {
+.table-sm td, .table-sm th {
     padding: .3rem;
 }
 
@@ -2514,13 +2501,12 @@ body.iosBugFixCaret.modal-open {
 
 @media (max-width: 767px) {
     form#filters .row .form-group.col-sm-6 {
-        padding-left: 5px !important;
-        padding-right: 5px !important;
+        padding-left: 5px!important;
+        padding-right: 5px!important;
     }
 }
 
 /* comparison */
-
 .comp-asset {
     border: 1px solid #F1F2F3;
     border-radius: 3px;
@@ -2544,10 +2530,10 @@ body.iosBugFixCaret.modal-open {
     color: #999999;
     font-size: 12px;
     font-weight: bold;
-    text-align: center !important;
+    text-align: center!important;
     line-height: 25px;
     transition: color .3s ease;
-    border: 1px solid rgba(0, 0, 0, 0);
+    border: 1px solid rgba(0,0,0,0);
 }
 
 .comp-asset-type:hover {
@@ -2576,20 +2562,20 @@ body.iosBugFixCaret.modal-open {
 .comp-row-label {
     color: #606060;
     width: 80px;
-    display: inline-block !important;
+    display: inline-block!important;
     margin-top: 0.3em;
 }
 
 .comp-group-labels {
     position: relative;
     min-height: 215px;
-    margin: .5rem !important;
+    margin: .5rem!important;
 }
 
 .remove-asset {
     width: 9px;
     height: 9px;
-    margin: 12px;
+    margin:12px;
     float: right;
     cursor: pointer;
     background-image: url("../../../static/img/remove_asset.svg");
@@ -2619,12 +2605,9 @@ body.iosBugFixCaret.modal-open {
 
 /* comparison END */
 
-.date-picker {
-    font-size: 14px;
-}
+.date-picker { font-size: 14px; }
 
 /* voting */
-
 .vote-bar {
     box-sizing: border-box;
     height: 12px;
@@ -2682,43 +2665,43 @@ body.iosBugFixCaret.modal-open {
     background-repeat: no-repeat;
     background-position: center;
     border-radius: 25px;
-    text-align: center !important;
-    display: inline-block !important;
-    margin: 0 5px 0 5px;
+    text-align: center!important;
+    display: inline-block!important;
+    margin:0 5px 0 5px;
     cursor: pointer;
 }
 
-.oval-border.down {
+.oval-border.down{
     background-image: url("../../../static/img/thumbs-down.svg");
 }
 
-.oval-border.voted {
+.oval-border.voted{
     background-color: #F2FBF2;
     background-image: url("../../../static/img/thumbs-up-colored.svg");
     border: none;
 }
 
-.oval-border.down.voted {
+.oval-border.down.voted{
     background-color: #FFF2F2;
     background-image: url("../../../static/img/thumbs-down-colored.svg");
     border: none;
 }
 
-.oval-border.hoverable:hover {
+.oval-border.hoverable:hover{
     background-image: url("../../../static/img/thumbs-up-colored.svg");
 }
 
-.oval-border.down.hoverable:hover {
+.oval-border.down.hoverable:hover{
     background-image: url("../../../static/img/thumbs-down-colored.svg");
 }
 
-.oval-border.voted.hoverable:hover {
+.oval-border.voted.hoverable:hover{
     background-image: url("../../../static/img/cross.svg");
     background-color: #FFFFFF;
     border: 1px solid #F1F2F3;
 }
 
-.oval-border.down.voted.hoverable:hover {
+.oval-border.down.voted.hoverable:hover{
     background-image: url("../../../static/img/cross.svg");
     background-color: #FFFFFF;
     border: 1px solid #F1F2F3;
@@ -2748,11 +2731,10 @@ body.iosBugFixCaret.modal-open {
 .img-circle {
     border-radius: 50%;
 }
-
 /* voting END */
 
-/* The sticky class is added to the navbar with JS when it reaches its scroll position */
 
+/* The sticky class is added to the navbar with JS when it reaches its scroll position */
 @media (max-width: 575px) {
     .sticky-with-shadow {
         position: sticky;
@@ -2761,7 +2743,7 @@ body.iosBugFixCaret.modal-open {
         z-index: 32;
         box-shadow: 0px 0px 2px black;
     }
-    .sticky-with-shadow .navbar-collapse.show .navbar-nav {
+    .sticky-with-shadow .navbar-collapse.show .navbar-nav{
         max-height: 80vh;
         overflow-y: scroll;
     }
@@ -2830,7 +2812,7 @@ body.iosBugFixCaret.modal-open {
 }
 
 .converter-widget {
-    padding: 10px;
+    padding:10px;
 }
 
 .converter-widget label {
@@ -2917,8 +2899,8 @@ body.iosBugFixCaret.modal-open {
     color: #F1F2F3;
     font-family: Courier;
     font-size: 12px;
-    padding: 15px 20px 15px 20px;
-    overflow: hidden;
+    padding:15px 20px 15px 20px;
+    overflow:hidden;
     border: 0px;
 }
 
@@ -2937,9 +2919,9 @@ body.iosBugFixCaret.modal-open {
 }
 
 @media (min-width: 767px) {
-    #top-banner {
-        min-height: 90px !important;
-    }
+  #top-banner {
+      min-height: 90px !important;
+  }
 }
 
 .sub-header-menu {

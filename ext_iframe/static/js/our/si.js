@@ -4,17 +4,9 @@ SocketInterface.init = function(hostport, initial_subscriptions, initial_handler
     log_outsize_after_mins = defaultFor(log_outsize_after_mins, 0);
     reconnect_attempts = defaultFor(reconnect_attempts, Infinity);
     initial_subscriptions = defaultFor(
-        initial_subscriptions, {
-            'trades': {},
-            'avgprice': {},
-            'mktcap': {}
-        });
+        initial_subscriptions, {'trades': {}, 'avgprice': {}, 'mktcap': {}});
     initial_handlers = defaultFor(
-        initial_handlers, {
-            'trades': {},
-            'avgprice': {},
-            'mktcap': {}
-        });
+        initial_handlers, {'trades': {}, 'avgprice': {}, 'mktcap': {}});
 
     SocketInterface.hostport = hostport;
     SocketInterface.subscriptions = initial_subscriptions;
@@ -27,7 +19,7 @@ SocketInterface.init = function(hostport, initial_subscriptions, initial_handler
         setTimeout(
             function() {
                 console.log('Total streamed bytes within the first ' + SocketInterface.log_outsize_after_mins +
-                    ' minutes: ' + SocketInterface.total_bytes);
+                            ' minutes: ' + SocketInterface.total_bytes);
             }, 60000 * SocketInterface.log_outsize_after_mins);
     }
     SocketInterface.total_bytes = 0;
@@ -42,11 +34,10 @@ SocketInterface.reset = function(subs, handlers) {
     SocketInterface.send_subscriptions();
 }
 
-SocketInterface.connect = function() {
+SocketInterface.connect = function () {
     SocketInterface.socket = io.connect(SocketInterface.hostport, {
-        reconnection: true,
-        reconnectionDelay: 1000,
-        reconnectionDelayMax: 3000,
+        reconnection: true, reconnectionDelay: 1000,
+        reconnectionDelayMax : 3000,
         reconnectionAttempts: Infinity
     });
     SocketInterface.socket.on('trades', function(data) {
@@ -82,7 +73,7 @@ SocketInterface.connect = function() {
         }
         SocketInterface.send_subscriptions();
     });
-    SocketInterface.socket.on('disconnect', function() {
+    SocketInterface.socket.on('disconnect', function () {
         SocketInterface.disconnect_time = get_timestamp();
     });
 }
@@ -109,7 +100,7 @@ SocketInterface.send_subscriptions_sync = function() {
     });
 }
 
-SocketInterface.get_signature = function(subs) {
+SocketInterface.get_signature = function (subs) {
     var signature = 0
     var salt = 8263
     for (var iy in subs) {
@@ -138,30 +129,24 @@ SocketInterface.add_trade_subscription = function(
     sub = "[" + from_coin_id + "," + to_coin_id + "," + exchange_id +
         "," + force_real_pair + "," + pref_coin_id + "]";
     SocketInterface.subscriptions['trades'][sub] = 0;
-    multi = [
-        ["trades", from_coin_id, to_coin_id, exchange_id, force_real_pair, pref_coin_id]
-    ];
+    multi = [["trades", from_coin_id, to_coin_id, exchange_id, force_real_pair, pref_coin_id]];
     SocketInterface.socket.emit(
         'multi_subscribe', multi, SocketInterface.get_signature(multi));
 }
 
-SocketInterface.add_avgprice_subscription = function(
+SocketInterface.add_avgprice_subscription = function (
     from_coin_id, to_coin_id, pref_coin_id) {
     sub = "[" + from_coin_id + "," + to_coin_id + "," + pref_coin_id + "]";
     SocketInterface.subscriptions['avgprice'][sub] = 0;
-    multi = [
-        ["avgprice", from_coin_id, to_coin_id, pref_coin_id]
-    ];
+    multi = [["avgprice", from_coin_id, to_coin_id, pref_coin_id]];
     SocketInterface.socket.emit(
         'multi_subscribe', multi, SocketInterface.get_signature(multi))
 }
 
-SocketInterface.add_mktcap_subscription = function(pref_coin_id) {
-    sub = "[" + pref_coin_id + "]";
+SocketInterface.add_mktcap_subscription = function (pref_coin_id) {
+    sub = "["+ pref_coin_id + "]";
     SocketInterface.subscriptions['mktcap'][sub] = 0;
-    multi = [
-        ["mktcap", pref_coin_id]
-    ];
+    multi = [["mktcap", pref_coin_id]];
     SocketInterface.socket.emit(
         'multi_subscribe', multi, SocketInterface.get_signature(multi));
 }
@@ -175,7 +160,7 @@ SocketInterface.add_trade_handler = function(
     SocketInterface.handlers['trades'][sub].push(callback);
 }
 
-SocketInterface.add_avgprice_handler = function(from_coin_id, to_coin_id, callback) {
+SocketInterface.add_avgprice_handler = function (from_coin_id, to_coin_id, callback) {
     sub = "[" + from_coin_id + "," + to_coin_id + "]";
     if (SocketInterface.handlers['avgprice'][sub] == undefined) {
         SocketInterface.handlers['avgprice'][sub] = [];
@@ -183,28 +168,28 @@ SocketInterface.add_avgprice_handler = function(from_coin_id, to_coin_id, callba
     SocketInterface.handlers['avgprice'][sub].push(callback);
 }
 
-SocketInterface.add_raw_trade_handler = function(callback) {
+SocketInterface.add_raw_trade_handler = function (callback) {
     if (SocketInterface.handlers['trades']['raw'] == undefined) {
         SocketInterface.handlers['trades']['raw'] = [];
     }
     SocketInterface.handlers['trades']['raw'].push(callback);
 }
 
-SocketInterface.add_raw_avgprice_handler = function(callback) {
+SocketInterface.add_raw_avgprice_handler = function (callback) {
     if (SocketInterface.handlers['avgprice']['raw'] == undefined) {
         SocketInterface.handlers['avgprice']['raw'] = [];
     }
     SocketInterface.handlers['avgprice']['raw'].push(callback);
 }
 
-SocketInterface.add_mktcap_handler = function(callback) {
+SocketInterface.add_mktcap_handler = function (callback) {
     if (SocketInterface.handlers['mktcap']['raw'] == undefined) {
         SocketInterface.handlers['mktcap']['raw'] = [];
     }
     SocketInterface.handlers['mktcap']['raw'].push(callback);
 }
 
-SocketInterface.send_subscriptions = function() {
+SocketInterface.send_subscriptions = function () {
     var multi_subscribe = [];
     for (var s_type in SocketInterface.subscriptions) {
         for (var s_vector in SocketInterface.subscriptions[s_type]) {
@@ -219,14 +204,14 @@ SocketInterface.send_subscriptions = function() {
     SocketInterface.socket.emit('multi_subscribe', multi_subscribe, SocketInterface.get_signature(multi_subscribe));
 }
 
-SocketInterface.handle_trade = function(data) {
+SocketInterface.handle_trade = function (data) {
     if (SocketInterface.log_outsize_after_mins) {
         SocketInterface.total_bytes += JSON.stringify(data).length;
     }
     exchange_id = data[0];
     from_coin_id = data[1];
     to_coin_id = data[2];
-    at = Math.floor(Date.now() / 1000); // used to be `at = data[3];` but streamer currently always sends 0
+    at = Math.floor(Date.now() / 1000);  // used to be `at = data[3];` but streamer currently always sends 0
     price = data[4];
     volume = data[5];
     volume24_from = data[6];
@@ -250,14 +235,14 @@ SocketInterface.handle_trade = function(data) {
     }
 }
 
-SocketInterface.handle_avgprice = function(data) {
+SocketInterface.handle_avgprice = function (data) {
     if (SocketInterface.log_outsize_after_mins) {
         SocketInterface.total_bytes += JSON.stringify(data).length;
     }
     from_coin_id = data[0];
     to_coin_id = data[1];
     price = data[2];
-    at = Math.floor(Date.now() / 1000); // used to be `at = data[3];` but streamer currently always sends 0
+    at = Math.floor(Date.now() / 1000);  // used to be `at = data[3];` but streamer currently always sends 0
     delta24pct = data[4];
     volume24_from = data[5];
     volume24_to = data[6];
@@ -293,7 +278,7 @@ SocketInterface.handle_avgprice = function(data) {
     }
 }
 
-SocketInterface.handle_mktcap = function(data) {
+SocketInterface.handle_mktcap = function (data) {
     if (SocketInterface.log_outsize_after_mins) {
         SocketInterface.total_bytes += JSON.stringify(data).length;
     }
