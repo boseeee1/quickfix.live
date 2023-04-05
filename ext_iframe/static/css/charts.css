@@ -7,15 +7,15 @@
     stroke: rgba(200, 200, 200, 0.05);
 }
 
-.dark .highcharts-xaxis .highcharts-tick .highcharts-yaxis {
+.dark .highcharts-xaxis .highcharts-tick .highcharts-yaxis{
     stroke: #444444;
 }
 
-.dark .highcharts-yaxis .highcharts-tick .highcharts-yaxis {
+.dark .highcharts-yaxis .highcharts-tick .highcharts-yaxis{
     stroke: #444444;
 }
 
-.dark .highcharts-axis-labels>text {
+.dark .highcharts-axis-labels > text{
     fill: #aaaaaa !important;
 }
 
@@ -31,7 +31,7 @@
     fill: #1e2330;
 }
 
-.dark .highcharts-button>text {
+.dark .highcharts-button  > text {
     fill: #888888 !important;
 }
 
@@ -55,23 +55,22 @@
     stroke: none !important;
 }
 
-.dark .highcharts-range-input>text {
+.dark .highcharts-range-input > text {
     fill: #888888 !important;
 }
 
 .highcharts-point {
-    stroke: rgba(255, 255, 255, 0.1);
+    stroke: rgba(255, 255, 255,0.1);
 }
 
-.highcharts-point.highcharts-point-up,
-.highcharts-point.highcharts-point-down {
+.highcharts-point.highcharts-point-up , .highcharts-point.highcharts-point-down {
     stroke: rgba(0, 0, 0, 0.5);
 }
 
-.dark .highcharts-point.highcharts-point-up,
-.dark .highcharts-point.highcharts-point-down {
+.dark .highcharts-point.highcharts-point-up , .dark .highcharts-point.highcharts-point-down {
     stroke: rgba(255, 255, 255, 0.5);
 }
+
 
 .highcharts-data-label text {
     font-size: 14px;
@@ -81,14 +80,12 @@
     fill: #B0B0B3;
     text-rendering: geometricPrecision;
 }
-
 .highcharts-label text {
-    stroke: rgba(255, 255, 255, 0.1);
+    stroke: rgba(255,255,255,0.1);
     fill: #555555;
 }
-
-.dark .highcharts-label text {
-    stroke: rgba(255, 255, 255, 0.1);
+.dark .highcharts-label text{
+    stroke: rgba(255,255,255,0.1);
 }
 
 .dark .highcharts-title tspan {

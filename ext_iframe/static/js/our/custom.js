@@ -1,4 +1,4 @@
-function Settings() {}
+function Settings(){}
 
 Settings.init = function(prefShortSymbol) {
     Settings.prefShortSymbol = prefShortSymbol;
@@ -16,9 +16,7 @@ var coin_search_options = {
             top.location.href = '/exchange/' + item.name.toLowerCase();
         }
     },
-    highlighter: function(item) {
-        return item;
-    },
+    highlighter: function(item) {return item;},
     sorter: function(items) {
         var symbolBegins = [];
         var nameBegins = [];
@@ -45,22 +43,19 @@ var coin_search_options = {
 function Selector_Cache() {
     var collection = {};
 
-    function get_from_cache(selector) {
-        if (undefined === collection[selector]) {
-            collection[selector] = $(selector);
+    function get_from_cache( selector ) {
+        if ( undefined === collection[ selector ] ) {
+            collection[ selector ] = $( selector );
         }
 
-        return collection[selector];
+        return collection[ selector ];
     }
 
     function invalidate() {
         collection = {};
     }
 
-    return {
-        get: get_from_cache,
-        invalidate: invalidate
-    };
+    return { get: get_from_cache, invalidate: invalidate };
 }
 
 var Generic = function() {
@@ -206,21 +201,19 @@ var Generic = function() {
                 return decodeURIComponent(document.cookie.replace(new RegExp("(?:(?:^|.*;)\\s*" + encodeURIComponent(sKey).replace(/[\-\.\+\*]/g, "\\$&") + "\\s*\\=\\s*([^;]*).*$)|^.*$"), "$1")) || null;
             },
             setItem: function(sKey, sValue, vEnd, sPath, sDomain, bSecure) {
-                if (!sKey || /^(?:expires|max\-age|path|domain|secure)$/i.test(sKey)) {
-                    return false;
-                }
+                if (!sKey || /^(?:expires|max\-age|path|domain|secure)$/i.test(sKey)) { return false; }
                 var sExpires = "";
                 if (vEnd) {
                     switch (vEnd.constructor) {
-                        case Number:
-                            sExpires = vEnd === Infinity ? "; expires=Wed, 31 Dec 2031 15:00:00 GMT" : "; max-age=" + vEnd;
-                            break;
-                        case String:
-                            sExpires = "; expires=" + vEnd;
-                            break;
-                        case Date:
-                            sExpires = "; expires=" + vEnd.toUTCString();
-                            break;
+                    case Number:
+                        sExpires = vEnd === Infinity ? "; expires=Wed, 31 Dec 2031 15:00:00 GMT" : "; max-age=" + vEnd;
+                        break;
+                    case String:
+                        sExpires = "; expires=" + vEnd;
+                        break;
+                    case Date:
+                        sExpires = "; expires=" + vEnd.toUTCString();
+                        break;
                     }
                 }
                 document.cookie = encodeURIComponent(sKey) + "=" + encodeURIComponent(sValue) + sExpires + (sDomain ? "; domain=" + sDomain : "") + (sPath ? "; path=" + sPath : "") + (bSecure ? "; secure" : "");
@@ -228,10 +221,8 @@ var Generic = function() {
             },
 
             removeItem: function(sKey, sPath, sDomain) {
-                if (!sKey || !this.hasItem(sKey)) {
-                    return false;
-                }
-                document.cookie = encodeURIComponent(sKey) + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT" + (sDomain ? "; domain=" + sDomain : "") + (sPath ? "; path=" + sPath : "");
+                if (!sKey || !this.hasItem(sKey)) { return false; }
+                document.cookie = encodeURIComponent(sKey) + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT" + ( sDomain ? "; domain=" + sDomain : "") + ( sPath ? "; path=" + sPath : "");
                 return true;
             },
             hasItem: function(sKey) {
@@ -318,16 +309,16 @@ var Generic = function() {
             var options = {
                 message: '<i class="fal fa-spin fa-sync" style="font-size:20px; margin-top: 25px;"></i>',
                 css: {
-                    border: '1px solid gray',
-                    padding: '10px 10px',
-                    backgroundColor: '#fff',
-                    width: '100px',
-                    height: '100px'
+                        border: '1px solid gray',
+                        padding: '10px 10px',
+                        backgroundColor: '#fff',
+                        width: '100px',
+                        height: '100px'
                 },
                 overlayCSS: {
-                    backgroundColor: '#555',
-                    opacity: 0.5,
-                    cursor: 'wait'
+                        backgroundColor: '#555',
+                        opacity: 0.5,
+                        cursor: 'wait'
                 }
             }
             if (target) {
@@ -379,7 +370,7 @@ var Generic = function() {
                     }
                 }
                 if (showit) {
-                    Generic.jsCookies.setItem('RVC', rvc + 1, Infinity, '/'); // make sure we won't show it again on refresh
+                    Generic.jsCookies.setItem('RVC', rvc + 1, Infinity, '/');  // make sure we won't show it again on refresh
                     Generic.showCoinlibShare();
                 }
             }
@@ -440,9 +431,7 @@ function drawSmallCharts(skip_invisible) {
         plotOptions: {
             area: {
                 lineWidth: 1,
-                marker: {
-                    enabled: false
-                },
+                marker: {enabled: false},
                 animation: false,
                 dataGrouping: {
                     enabled: true,
@@ -464,19 +453,15 @@ function drawSmallCharts(skip_invisible) {
             visible: false,
             type: 'datetime'
         },
-        yAxis: [{
-            visible: false,
-            alignTicks: false,
-            startOnTick: false,
-            endOnTick: false
-        }],
-        title: {
-            text: undefined
-        },
+        yAxis: [{visible: false,
+                 alignTicks: false,
+                 startOnTick: false,
+                 endOnTick: false}],
+        title: {text: undefined},
         legend: false,
     };
 
-    var first = true; // hack
+    var first = true;  // hack
 
     $('.small-chart').each(function() {
         if (skip_invisible && !$(this).is(':visible')) {
@@ -491,23 +476,19 @@ function drawSmallCharts(skip_invisible) {
         };
         if ($(this).width() < 120) {
             opt.tooltip.enabled = false;
-            opt.plotOptions.series.states = {
-                hover: {
-                    enabled: false
-                }
-            };
+            opt.plotOptions.series.states = {hover: {enabled : false}};
         }
         if ($(this).attr('numberooltip') == '1') {
             opt.tooltip.formatter =
                 function() {
                     return Highcharts.dateFormat('%e %b %Y', this.x) + '<br>' + format_price(this.point.y);
                 };
-        } else if (parseInt($(this).attr('point-interval')) <= 60 * 1000) {
+        } else if (parseInt($(this).attr('point-interval')) <= 60*1000) {
             opt.tooltip.formatter =
                 function() {
                     return Highcharts.dateFormat('%e %b %H:%M', this.x) + '<br>' + htmlDecode(Settings.prefShortSymbol) + format_price(this.point.y);
                 };
-        } else if (parseInt($(this).attr('point-interval')) < 24 * 60 * 60 * 1000) {
+        } else if (parseInt($(this).attr('point-interval')) < 24*60*60*1000) {
             opt.tooltip.formatter =
                 function() {
                     return Highcharts.dateFormat('%e %b %H:00', this.x) + '<br>' + htmlDecode(Settings.prefShortSymbol) + format_price(this.point.y);
@@ -523,11 +504,12 @@ function drawSmallCharts(skip_invisible) {
             negativeColor: '#e74c3c',
             threshold: $(this).attr('threshold') == undefined ? data[0] : parseFloat($(this).attr('threshold'))
         }];
-        opt.yAxis.plotLines = [{
-            color: '#888888',
-            width: 1,
-            value: data[0]
-        }];
+        opt.yAxis.plotLines = [
+            { color: '#888888',
+              width: 1,
+              value: data[0]
+            }
+        ];
         var ch = new Highcharts.Chart(this, opt);
 
         // Removing this makes the 1st chart in homepage smaller some times :/
@@ -539,15 +521,13 @@ function drawSmallCharts(skip_invisible) {
     $('.small-live-chart').each(function() {
         var t = this;
 
-        var interval = 10 * 60000; // 10 minutes
+        var interval = 10 * 60000;  // 10 minutes
         if (parseInt($(this).attr('point-interval')) <= 60000) {
-            interval = 3 * 60000; // 3 minutes if hourly
+            interval = 3 * 60000;  // 3 minutes if hourly
         }
 
         setTimeout(function() {
-            setInterval(function() {
-                update_chart(t)
-            }, interval);
+            setInterval(function() { update_chart(t) }, interval);
         }, Math.round(30000 + Math.random() * 30000));
     });
 }
@@ -557,9 +537,7 @@ function update_small_charts() {
     var i = 0;
     $('.small-live-chart').each(function() {
         var t = this;
-        setTimeout(function() {
-            update_chart(t);
-        }, i * 1000); // max 1 update / sec
+        setTimeout(function() { update_chart(t); }, i * 1000); // max 1 update / sec
         i++;
     });
 }
@@ -585,7 +563,7 @@ function update_chart(chart) {
             pointStart: new Date(data['date_start']).getTime()
         }, false);
         hc.yAxis[0].setExtremes(Math.min.apply(null, data['data']), Math.max.apply(null, data['data']), false);
-        hc.redraw(); // only redraw once, the above functions better have redraw=false
+        hc.redraw();  // only redraw once, the above functions better have redraw=false
     });
 }
 
@@ -623,10 +601,7 @@ function update_value(element, new_value, colored, bolded) {
             if (bolded) cl += 'sbold ';
             if (bolded || colored) element.addClass(cl);
         }
-        if (bolded || colored) setTimeout(function() {
-            element.removeClass('up down sbold');
-            if (dimmed) element.addClass('dimmed');
-        }, 1500);
+        if (bolded || colored) setTimeout(function () { element.removeClass('up down sbold'); if (dimmed) element.addClass('dimmed'); }, 1500);
     }
 }
 
@@ -669,7 +644,7 @@ function format_price(price, no_commas, extra_precision, no_decimals_after) {
     price = parseFloat(price);
     if (price > -1 && price < 1) {
         d = Math.ceil(-Math.log10(Math.abs(price)) + 2)
-        if (d >= 5) d = 8; // if < 0.001 show 8 decimals
+        if (d >= 5) d = 8;  // if < 0.001 show 8 decimals
         decimals = (price % 1).toFixed(15);
         r = decimals.substring(0, d + 2 + extra_precision);
         if (extra_precision > 0) {
@@ -727,7 +702,7 @@ function format_price_exact(price) {
     }
 
     whole_digits = price < 1 ? 0 : Math.floor(price).toString().length;
-    fixed = price.toFixed(Math.max(8 - whole_digits, 4)); // round to up to 8 digits
+    fixed = price.toFixed(Math.max(8 - whole_digits, 4));  // round to up to 8 digits
     fixed = fixed.replace(/0+$/, '').replace(/\.$/, ''); // remove trailing zeroes
 
     d = (parseFloat(fixed) / price).toFixed(8);
@@ -747,9 +722,7 @@ function format_price_exact(price) {
 
 function filter_pie_data(data, pct_threshold) {
     pct_threshold = defaultFor(pct_threshold, 4);
-    data.sort(function(a, b) {
-        return b[1] - a[1];
-    });
+    data.sort(function(a, b) { return b[1] - a[1]; });
     var sum = 0;
     for (var ix = 0; ix < data.length; ++ix) {
         sum += data[ix][1];
@@ -786,7 +759,7 @@ function get_pie_chart(container, data, prefShortSymbol) {
                 },
                 chartOptions: {
                     chart: {
-                        spacing: [10, 0, 10, 0]
+                        spacing: [10,0,10,0]
                     },
                 }
             }]
@@ -795,16 +768,14 @@ function get_pie_chart(container, data, prefShortSymbol) {
             type: 'pie',
             backgroundColor: undefined,
         },
-        credits: {
-            enabled: false
-        },
+        credits: { enabled: false },
         title: {
             text: ''
         },
         tooltip: {
             useHTML: true,
             formatter: function() {
-                return this.point.name + ': <b>' + htmlDecode(prefShortSymbol) + ' ' + format_large_number(this.point.y) + ' (' + (Math.round(this.point.percentage * 10) / 10) + '%)</b>';
+                return this.point.name + ': <b>' + htmlDecode(prefShortSymbol) + ' ' + format_large_number(this.point.y) + ' (' + (Math.round(this.point.percentage*10)/10) + '%)</b>';
             }
         },
         plotOptions: {
@@ -840,7 +811,7 @@ function defaultFor(arg, val) {
 
 // useless IE <=11
 Math.log10 = Math.log10 || function(x) {
-    return Math.log(x) * Math.LOG10E;
+  return Math.log(x) * Math.LOG10E;
 };
 
 // return a deep copy of an item
@@ -884,9 +855,7 @@ function clone(obj) {
 
 function get_timestamp() {
     if (!Date.now) {
-        Date.now = function() {
-            return new Date().getTime();
-        }
+        Date.now = function() { return new Date().getTime(); }
     }
     return Math.floor(Date.now() / 1000);
 }
@@ -926,8 +895,7 @@ function updateGraphCustomLabels(label, chart, prefShortSymbol, suffix, format_f
         }
     }
     var pcnt = get_percent(last, first, 2, true);
-    var low = Number.MAX_SAFE_INTEGER,
-        high = 0;
+    var low = Number.MAX_SAFE_INTEGER, high = 0;
     for (ix = 0; ix < chart.series[0].points.length; ix++) {
         if (chart.series[0].points[ix] != undefined) {
             var cur = chart.series[0].points[ix].y;
@@ -949,7 +917,6 @@ function updateGraphCustomLabels(label, chart, prefShortSymbol, suffix, format_f
     label.attr({
         text: '<div>&nbsp;<b>D</b>:<span style="color:#' + (pcnt > 0 ? '68db73' : 'ee5630') + ';">' + pcnt + '% &nbsp;</span><b>L/H</b>:' + format_fn(low) + suffix + ' / ' + format_fn(high) + suffix +
             ((totalvolume > 0) ?
-                (' &nbsp;<b>V</b>:' + prefShortSymbol + format_large_number(totalvolume) + suffix) : '') +
-            '</div>'
-    });
+            (' &nbsp;<b>V</b>:' + prefShortSymbol + format_large_number(totalvolume) + suffix) : '') +
+            '</div>'});
 }
